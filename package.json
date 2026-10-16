@@ -1,0 +1,32 @@
+{
+  "name": "codekwes",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Practice coding with freeCodeCamp's open-source curriculum. Progress tracking, code playground, and curated practice links.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && npx wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "@codemirror/lang-css": "^6.3.0",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@supabase/supabase-js": "^2.49.1",
+    "@uiw/react-codemirror": "^4.23.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.1.4",
+    "typescript": "~5.7.3",
+    "vite": "^6.2.0"
+  }
+}
