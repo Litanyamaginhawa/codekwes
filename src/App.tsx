@@ -5,6 +5,7 @@ import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import CatalogPage from './pages/CatalogPage'
 import BlockDetailPage from './pages/BlockDetailPage'
+import LessonPage from './pages/LessonPage'
 import PlaygroundPage from './pages/PlaygroundPage'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/practice" element={<CatalogPage />} />
             <Route path="/practice/:certSlug/:blockSlug" element={<BlockDetailPage />} />
+            <Route path="/practice/:certSlug/:blockSlug/learn" element={<LessonPage />} />
             <Route path="/playground" element={<PlaygroundPage />} />
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/login" element={<LoginPage />} />

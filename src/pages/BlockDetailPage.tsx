@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   countByCert,
@@ -9,6 +10,7 @@ import {
   TYPE_LABEL,
 } from '../lib/catalog'
 import { withAlpha } from '../lib/color'
+import { loadLessonIndex } from '../lib/lessons'
 import { useProgress } from '../contexts/ProgressContext'
 import TypeBadge from '../components/TypeBadge'
 import {
@@ -17,6 +19,7 @@ import {
   IconChevronRight,
   IconExternal,
   IconGithub,
+  IconPlay,
 } from '../components/icons'
 
 export default function BlockDetailPage() {
@@ -24,6 +27,19 @@ export default function BlockDetailPage() {
   const item = getItem(certSlug, blockSlug)
   const cert = getCertMeta(certSlug)
   const { isDone, toggle, countForCert } = useProgress()
+  const [lessonInfo, setLessonInfo] = useState<{ items: number } | null>(null)
+
+  useEffect(() => {
+    let active = true
+    loadLessonIndex().then((index) => {
+      if (!active) return
+      const entry = index.blocks[blockSlug]
+      setLessonInfo(entry ? { items: entry.items } : null)
+    })
+    return () => {
+      active = false
+    }
+  }, [blockSlug])
 
   if (!item || !cert) {
     return (
@@ -99,7 +115,18 @@ export default function BlockDetailPage() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href={item.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            {lessonInfo && (
+              <Link to={`/practice/${certSlug}/${blockSlug}/learn`} className="btn btn-primary">
+                <IconPlay size={16} />
+                {lessonInfo.items > 1 ? `Practice here · ${lessonInfo.items} steps` : 'Practice this block here'}
+              </Link>
+            )}
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={lessonInfo ? 'btn btn-secondary' : 'btn btn-primary'}
+            >
               {item.type === 'project' ? 'Build it on freeCodeCamp' : 'Solve on freeCodeCamp'}
               <IconExternal size={16} />
             </a>
@@ -130,9 +157,10 @@ export default function BlockDetailPage() {
             </div>
             <p className="mt-4 text-xs leading-relaxed text-slate-500">
               {TYPE_LABEL[item.type]} blocks are part of the{' '}
-              <span className="text-slate-400">{cert.name}</span> certification. freeCodeCamp hosts
-              and grades every exercise — this site keeps your practice plan and progress in one
-              place.{' '}
+              <span className="text-slate-400">{cert.name}</span> certification.{' '}
+              {lessonInfo
+                ? 'This block is playable right here on CodeKwes using freeCodeCamp’s open-source curriculum — your code and step progress are saved in your browser.'
+                : 'freeCodeCamp hosts and grades every exercise — this site keeps your practice plan and progress in one place.'}{' '}
               <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="link">
                 View the official curriculum source
               </a>

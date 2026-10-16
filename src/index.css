@@ -236,3 +236,118 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* --- Lesson content (freeCodeCamp markdown) ---------------------------- */
+.lesson-content {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.lesson-content > :first-child {
+  margin-top: 0;
+}
+.lesson-content p {
+  margin: 0.6rem 0;
+}
+.lesson-content h2,
+.lesson-content h3,
+.lesson-content h4 {
+  color: #f1f5f9;
+  font-weight: 700;
+  margin: 1.1rem 0 0.5rem;
+}
+.lesson-content h2 {
+  font-size: 1.05rem;
+}
+.lesson-content h3 {
+  font-size: 0.95rem;
+}
+.lesson-content h4 {
+  font-size: 0.875rem;
+}
+.lesson-content a {
+  color: #7dd3fc;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.lesson-content ul,
+.lesson-content ol {
+  margin: 0.6rem 0 0.6rem 1.35rem;
+}
+.lesson-content ul {
+  list-style: disc;
+}
+.lesson-content ol {
+  list-style: decimal;
+}
+.lesson-content li {
+  margin: 0.3rem 0;
+}
+.lesson-content li::marker {
+  color: #38bdf8;
+}
+.lesson-content code {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  color: #7dd3fc;
+  background: rgba(125, 211, 252, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.15);
+  border-radius: 0.35rem;
+  padding: 0.08rem 0.35rem;
+}
+.lesson-content pre {
+  background: rgba(7, 7, 15, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  margin: 0.8rem 0;
+}
+.lesson-content pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #e2e8f0;
+  font-size: 0.82em;
+}
+.lesson-content blockquote {
+  border-left: 3px solid rgba(56, 189, 248, 0.45);
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  margin: 0.8rem 0;
+  color: #94a3b8;
+}
+.lesson-content dfn {
+  font-style: normal;
+  color: #7dd3fc;
+}
+.lesson-content strong {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+.lesson-content em {
+  color: #e2e8f0;
+}
+.lesson-content hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 1rem 0;
+}
+.lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8rem 0;
+  font-size: 0.85rem;
+}
+.lesson-content th,
+.lesson-content td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+.lesson-content th {
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.04);
+}
+.lesson-content img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
